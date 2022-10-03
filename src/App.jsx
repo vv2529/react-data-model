@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import useAppModel from './useAppModel'
+import NumberController from './components/NumberController'
+import NumberRandomizer from './components/NumberRandomizer'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	// State updates to `number` will be triggered across the entire app
+	const app = useAppModel(['number'])
+
+	return (
+		<div className="app">
+			<div className="number">
+				{app.number} / {app.questionMarks}
+			</div>
+			<NumberController />
+			<NumberRandomizer />
+		</div>
+	)
 }
 
-export default App;
+export default App
